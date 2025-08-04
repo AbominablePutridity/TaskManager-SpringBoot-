@@ -1,0 +1,4 @@
+com/mycompany/taskmanager/entity/User.class
+com/mycompany/taskmanager/entity/Role.class
+com/mycompany/taskmanager/TaskManager.class
+com/mycompany/taskmanager/entity/Statistics.class
