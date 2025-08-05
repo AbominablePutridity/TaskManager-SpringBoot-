@@ -35,7 +35,11 @@ public class Role {
     @Column(name = "name")
     private String name;
     
-    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = false)
+    @OneToMany(
+            mappedBy = "role",
+            cascade = CascadeType.ALL,
+            orphanRemoval = false
+    )
     private List<User> users = new ArrayList<>();
     
     // Методы для управления связью

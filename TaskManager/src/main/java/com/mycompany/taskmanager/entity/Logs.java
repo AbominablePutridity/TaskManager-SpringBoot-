@@ -4,20 +4,15 @@
  */
 package com.mycompany.taskmanager.entity;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import lombok.Data;
 
 /**
@@ -25,27 +20,20 @@ import lombok.Data;
  * @author maxim
  */
 @Entity
-@Table(name = "statistics")
+@Table(name = "logs") 
 @Data
-public class Statistics {
+public class Logs {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    @Column(name = "action")
+    private String action;
+    
     @Column(name = "time")
     private LocalDateTime time;
     
-    @Column(name = "description")
-    private String description;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "user_id")
     private User user;
-    
-    @OneToMany(
-            mappedBy = "statistics",
-            cascade = CascadeType.ALL,
-            orphanRemoval = false
-    )
-    private List<Task> tasks = new ArrayList<>();
 }

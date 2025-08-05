@@ -7,15 +7,14 @@ package com.mycompany.taskmanager.entity;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.Data;
@@ -25,27 +24,42 @@ import lombok.Data;
  * @author maxim
  */
 @Entity
-@Table(name = "statistics")
+@Table(name = "project") 
 @Data
-public class Statistics {
+public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Column(name = "time")
-    private LocalDateTime time;
+    @Column(name = "name")
+    private String name;
     
-    @Column(name = "description")
-    private String description;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @Column(name = "is_delete")
+    private boolean isDelete;
     
     @OneToMany(
-            mappedBy = "statistics",
+            mappedBy = "project",
             cascade = CascadeType.ALL,
             orphanRemoval = false
     )
     private List<Task> tasks = new ArrayList<>();
+    
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "user_project",
+            joinColumns = @JoinColumn(name = "project_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private List<User> users = new ArrayList<>();
+    
+    // Методы для управления связью
+    public void addUsers(User user) {
+        users.add(user);
+        user.getProjects().add(this);
+    }
+    
+    public void removeUsers(User user) {
+        users.remove(user);
+        user.getProjects().remove(this);
+    }
 }

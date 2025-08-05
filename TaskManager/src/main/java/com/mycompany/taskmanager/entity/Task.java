@@ -7,17 +7,14 @@ package com.mycompany.taskmanager.entity;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import lombok.Data;
 
 /**
@@ -25,27 +22,33 @@ import lombok.Data;
  * @author maxim
  */
 @Entity
-@Table(name = "statistics")
+@Table(name = "task")
 @Data
-public class Statistics {
+public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Column(name = "time")
-    private LocalDateTime time;
+    @Column(name = "name")
+    private String name;
     
     @Column(name = "description")
     private String description;
     
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @Column(name = "date_begin")
+    private LocalDate dateBegin;
     
-    @OneToMany(
-            mappedBy = "statistics",
-            cascade = CascadeType.ALL,
-            orphanRemoval = false
-    )
-    private List<Task> tasks = new ArrayList<>();
+    @Column(name = "date_end")
+    private LocalDate dateEnd;
+    
+    @Column(name = "time")
+    private LocalDateTime time;
+    
+    @ManyToOne()
+    @JoinColumn(name = "project_id")
+    private Project project;
+    
+    @ManyToOne()
+    @JoinColumn(name = "statistics_id")
+    private Statistics statistics;
 }
