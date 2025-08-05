@@ -1,3 +1,4 @@
+/home/maxim/Документы/TaskTracker/TaskManager/src/main/java/com/mycompany/taskmanager/SecurityConfig.java
 /home/maxim/Документы/TaskTracker/TaskManager/src/main/java/com/mycompany/taskmanager/entity/Role.java
 /home/maxim/Документы/TaskTracker/TaskManager/src/main/java/com/mycompany/taskmanager/entity/Task.java
 /home/maxim/Документы/TaskTracker/TaskManager/src/main/java/com/mycompany/taskmanager/entity/User.java
@@ -6,3 +7,6 @@
 /home/maxim/Документы/TaskTracker/TaskManager/src/main/java/com/mycompany/taskmanager/entity/Statistics.java
 /home/maxim/Документы/TaskTracker/TaskManager/src/main/java/com/mycompany/taskmanager/TaskManager.java
 /home/maxim/Документы/TaskTracker/TaskManager/src/main/java/com/mycompany/taskmanager/entity/Status.java
+/home/maxim/Документы/TaskTracker/TaskManager/src/main/java/com/mycompany/taskmanager/controller/TestController.java
+/home/maxim/Документы/TaskTracker/TaskManager/src/main/java/com/mycompany/taskmanager/service/AuthService.java
+/home/maxim/Документы/TaskTracker/TaskManager/src/main/java/com/mycompany/taskmanager/repository/UserRepository.java

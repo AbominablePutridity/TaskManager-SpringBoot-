@@ -517,7 +517,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="3pTK7fBWNvM4ObpRO3ZD-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="O06AE6n02C-FcsiamSmh-12" target="O06AE6n02C-FcsiamSmh-129" edge="1">
+        <mxCell id="3pTK7fBWNvM4ObpRO3ZD-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="O06AE6n02C-FcsiamSmh-12" target="O06AE6n02C-FcsiamSmh-129" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="790" y="410" as="targetPoint" />
             <Array as="points">
@@ -526,7 +526,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="5nOgdHhD4RqcRp3tA-L1-1" value="status" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;" vertex="1" parent="1">
+        <mxCell id="5nOgdHhD4RqcRp3tA-L1-1" value="status" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
           <mxGeometry x="1151" y="130" width="180" height="90" as="geometry" />
         </mxCell>
         <mxCell id="5nOgdHhD4RqcRp3tA-L1-2" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" vertex="1" parent="5nOgdHhD4RqcRp3tA-L1-1">
@@ -555,7 +555,7 @@
             <mxRectangle width="150" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="5nOgdHhD4RqcRp3tA-L1-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="5nOgdHhD4RqcRp3tA-L1-2" target="5nOgdHhD4RqcRp3tA-L1-14">
+        <mxCell id="5nOgdHhD4RqcRp3tA-L1-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" edge="1" parent="1" source="5nOgdHhD4RqcRp3tA-L1-2" target="5nOgdHhD4RqcRp3tA-L1-14">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>

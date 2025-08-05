@@ -1,0 +1,8 @@
+-- SELECT * FROM public.role
+-- ORDER BY id ASC 
+
+INSERT INTO public.role (name) VALUES ('ADMIN'), ('USER');
+
+-- Пароль: "admin" (зашифрованный)
+INSERT INTO public."user" (login, password, is_delete, role_id) 
+VALUES ('admin', '$2a$10$MUQ9R6jVrBNTg8J4HkGHBu/i5Jdjo0llzB8Qu9D0OqE9rTUbDDN/2', false, 1);
