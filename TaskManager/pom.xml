@@ -47,6 +47,12 @@
             <artifactId>lombok</artifactId>
             <version>1.18.38</version>
         </dependency>
+        
+        <!-- Spring Security -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
     </dependencies>
     
     <build>

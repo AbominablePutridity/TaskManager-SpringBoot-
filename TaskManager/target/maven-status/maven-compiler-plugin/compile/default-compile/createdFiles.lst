@@ -1,5 +1,6 @@
 com/mycompany/taskmanager/entity/Task.class
 com/mycompany/taskmanager/entity/User.class
+com/mycompany/taskmanager/entity/Status.class
 com/mycompany/taskmanager/entity/Project.class
 com/mycompany/taskmanager/entity/Statistics.class
 com/mycompany/taskmanager/entity/Role.class
