@@ -29,6 +29,9 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    @Column(name = "code")
+    private String code;
+    
     @Column(name = "name")
     private String name;
     
@@ -51,4 +54,8 @@ public class Task {
     @ManyToOne()
     @JoinColumn(name = "statistics_id")
     private Statistics statistics;
+    
+    @ManyToOne()
+    @JoinColumn(name = "user_id")
+    private User user;
 }

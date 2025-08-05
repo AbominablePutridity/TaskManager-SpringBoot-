@@ -68,6 +68,9 @@ public class User {
     private List<Logs> logs = new ArrayList<>();
     
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = false)
+    private List<Task> tasks = new ArrayList<>();
+    
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = false)
     private List<Statistics> statistics = new ArrayList<>();
     
     // Методы для управления связью
