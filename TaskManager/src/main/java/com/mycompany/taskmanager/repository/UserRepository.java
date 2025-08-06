@@ -6,11 +6,13 @@ package com.mycompany.taskmanager.repository;
 
 import com.mycompany.taskmanager.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 /**
  *
  * @author maxim
  */
+@RepositoryRestResource(exported = false)
 public interface UserRepository extends JpaRepository<User, Long> {
     User findByLogin(String login);
 }

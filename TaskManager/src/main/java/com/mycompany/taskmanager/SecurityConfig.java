@@ -42,7 +42,7 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/public/**").permitAll()
                 .requestMatchers("/api/admin/**").hasAuthority("ADMIN") // Проверка ролей
-                .requestMatchers("/api/user/**").hasAnyAuthority("USER", "ADMIN")
+                .requestMatchers("/api/user/**").hasAnyAuthority("USER", "ADMIN") //если роль админ, то он ноже может делать те же вещи что и пользователь, только еще и свои
                 .anyRequest().authenticated()
             )
             .httpBasic(withDefaults()) // Включаем Basic Auth

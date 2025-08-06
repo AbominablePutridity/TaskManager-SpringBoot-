@@ -1,5 +1,8 @@
+com/mycompany/taskmanager/dto/UserDto.class
+com/mycompany/taskmanager/dto/RoleDto.class
 com/mycompany/taskmanager/entity/User.class
 com/mycompany/taskmanager/entity/Status.class
+com/mycompany/taskmanager/controller/UserCustomController.class
 com/mycompany/taskmanager/controller/TestController.class
 com/mycompany/taskmanager/entity/Role.class
 com/mycompany/taskmanager/SecurityConfig.class

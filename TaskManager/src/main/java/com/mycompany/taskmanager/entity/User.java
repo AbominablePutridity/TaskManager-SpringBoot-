@@ -19,8 +19,11 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 /**
  *
@@ -29,7 +32,7 @@ import lombok.Data;
 @Entity
 @Table(name = "\"user\"") //Экранировние потому что слово зарезервировано в SQL
 @Data
-public class User {
+public class User { //имплементируем на пользователя для определения springSecurity чтобы можно было брать экземпляр текущего пользователя из сессии
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -40,7 +43,7 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
     
-    @Column(name = "birth_date")
+    @Column(name = "birth_date", nullable = false)
     private LocalDate birthDate; //Дата без времени
     
     @Column(name = "is_delete")
@@ -53,7 +56,7 @@ public class User {
     private String password;
     
     @ManyToOne()
-    @JoinColumn(name = "role_id")
+    @JoinColumn(name = "role_id", nullable = false)
     private Role role;
     
     @ManyToMany(cascade = CascadeType.ALL)
