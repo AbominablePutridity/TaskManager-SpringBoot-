@@ -13,10 +13,12 @@ import lombok.Data;
  */
 @Data
 public class ProjectDto {
+    private Long id;
     private String name;
     private boolean isDelete;
     
     public ProjectDto(Project project) {
+        id = project.getId();
         this.name = project.getName() != null ? project.getName() : "";
         this.isDelete = project.isDelete();
     }

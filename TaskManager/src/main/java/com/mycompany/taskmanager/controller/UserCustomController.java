@@ -9,11 +9,10 @@ import com.mycompany.taskmanager.entity.User;
 import com.mycompany.taskmanager.repository.UserRepository;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,16 +46,35 @@ public class UserCustomController {
 
     //!!! ПОЛЬЗОВАТЕЛЬ
     
+    
+    /*
+    Для Pageble:
+    Параметры запроса по умолчанию:
+
+    page – номер страницы (начинается с 0)
+
+    size – количество элементов на странице
+
+    sort – сортировка (необязательно)
+     */
     // GET (коллекция) → /api/user/user
     @GetMapping("/api/user/user")
-    public ResponseEntity<?> getAllUsers() {
-        List<UserDto> usersDto = new ArrayList<>();
+    public ResponseEntity<Page<UserDto>> getAllUsers(Pageable pageable) {
+        // Получаем страницу пользователей из репозитория
+        Page<User> usersPage = userRepository.findAll(pageable);
+
+        // Преобразуем Page<User> в Page<UserDto>
+        Page<UserDto> usersDtoPage = usersPage.map(user -> new UserDto(user));
+
+        return ResponseEntity.ok(usersDtoPage);
+    }
+    
+    // GET (текущий пользователь) → /api/user/user
+    @GetMapping("/api/user/me")
+    public UserDto getCurrentUser(Authentication authentication) {
+        User currentUser = userRepository.findByLogin(authentication.getName());
         
-        for(User user : userRepository.findAll()) {
-            usersDto.add(new UserDto(user));
-        }
-        
-        return ResponseEntity.ok(usersDto);
+        return new UserDto(currentUser);
     }
     
     // GET (одна запись) → /api/user/user/{id}

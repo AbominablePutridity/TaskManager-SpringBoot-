@@ -23,19 +23,19 @@ public class TestController {
     }
 
     // Только для аутентифицированных
-    @GetMapping("/api/user/me")
+    @GetMapping("/api/user/meTest1")
     public String userEndpoint() {
         return "User area! Your login: " + 
             SecurityContextHolder.getContext().getAuthentication().getName();
     }
 
     // Только для ADMIN
-    @GetMapping("/api/admin/data")
+    @GetMapping("/api/admin/data1")
     public String adminEndpoint() {
         return "Super secret admin data!";
     }
     
-    @GetMapping("/api/debug/roles")
+    @GetMapping("/api/debug/roles1")
     public String debugRoles() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return "Текущие роли: " + auth.getAuthorities().toString();
