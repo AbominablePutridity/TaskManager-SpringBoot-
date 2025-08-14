@@ -5,12 +5,16 @@ com\mycompany\taskmanager\controller\ProjectController.class
 com\mycompany\taskmanager\dto\RoleDto.class
 com\mycompany\taskmanager\entity\Status.class
 com\mycompany\taskmanager\controller\UserCustomController.class
+com\mycompany\taskmanager\controller\TaskController.class
 com\mycompany\taskmanager\entity\Project.class
+com\mycompany\taskmanager\dto\TaskDto.class
 com\mycompany\taskmanager\entity\Role.class
 com\mycompany\taskmanager\dto\ProjectDto.class
+com\mycompany\taskmanager\dto\StatusDto.class
 com\mycompany\taskmanager\entity\User.class
 com\mycompany\taskmanager\service\AuthService.class
 com\mycompany\taskmanager\entity\Statistics.class
+com\mycompany\taskmanager\repository\TaskRepository.class
 com\mycompany\taskmanager\entity\Logs.class
 com\mycompany\taskmanager\dto\UserDto.class
 com\mycompany\taskmanager\TaskManager.class
