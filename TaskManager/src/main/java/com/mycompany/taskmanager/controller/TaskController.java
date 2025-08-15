@@ -10,6 +10,7 @@ import com.mycompany.taskmanager.entity.Task;
 import com.mycompany.taskmanager.entity.User;
 import com.mycompany.taskmanager.repository.TaskRepository;
 import com.mycompany.taskmanager.repository.UserRepository;
+import com.mycompany.taskmanager.service.TaskService;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.data.domain.Page;
@@ -32,32 +33,20 @@ import org.springframework.web.bind.annotation.RestController;
 public class TaskController {
     private final UserRepository userRepository;
     private final TaskRepository taskRepository;
+    private final TaskService taskService;
     
-    public TaskController(UserRepository userRepository, TaskRepository taskRepository) {
+    public TaskController(UserRepository userRepository, TaskRepository taskRepository, TaskService taskService) {
         this.userRepository = userRepository;
         this.taskRepository = taskRepository;
+        this.taskService = taskService;
     }
     
     //!!! ПОЛЬЗОВАТЕЛЬ
     
     // GET (коллекция) → api/user/myTasks (видит все свои таски)
-    @GetMapping("api/user/myTasks")
-    public List<TaskDto> getMyTasks(Authentication authentication) {
-        User currentUser = userRepository.findByLogin(authentication.getName());
-        
-        List<Task> tasks = new ArrayList<>();
-        for (Project project : currentUser.getProjects()) {
-            if (project.isDelete() == false) {
-                tasks = project.getTasks();
-            }
-        }
-        
-        List<TaskDto> tasksResult = new ArrayList<>();
-        for (Task task : tasks) {
-            tasksResult.add(new TaskDto(task));
-        }
-        
-        return tasksResult;
+    @GetMapping("api/user/project/{id}/myTasks")
+    public List<TaskDto> getMyTasks(@PathVariable Long id, Authentication authentication) {
+        return taskService.getUserTasks(id, authentication);
     }
     
     //!!! АДМИН
@@ -72,9 +61,9 @@ public class TaskController {
 
     sort – сортировка (необязательно)
      */
-    @GetMapping("api/admin/getAllTasks")
-    public Page<TaskDto> getAllProjects(Pageable pageable){
-        return taskRepository.findAll(pageable).map(task -> new TaskDto(task));
+    @GetMapping("api/admin/project/{id}/getTasks")
+    public Page<TaskDto> getAllProjects(@PathVariable Long id, Pageable pageable){
+        return taskRepository.findAll(pageable, id).map(task -> new TaskDto(task));
     }
     
     @PostMapping("/api/admin/task")

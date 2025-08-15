@@ -25,6 +25,7 @@ public class TaskDto {
     private UserDto user;
     private ProjectDto project;
     private StatusDto status;
+    private StatisticsDto statistics;
     
     public TaskDto(Task task) {
         this.id = task.getId();
@@ -37,5 +38,6 @@ public class TaskDto {
         this.user = new UserDto(task.getUser());
         this.project = new ProjectDto(task.getProject());
         this.status = new StatusDto(task.getStatus());
+        this.statistics = new StatisticsDto(task.getStatistics());
     }
 }
