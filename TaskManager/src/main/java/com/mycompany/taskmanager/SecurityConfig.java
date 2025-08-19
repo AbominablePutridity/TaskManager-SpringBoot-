@@ -17,6 +17,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
 
 /**
  * Главная конфигурация Spring Security
@@ -38,6 +39,15 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                
+            .cors(cors -> cors.configurationSource(request -> {
+                CorsConfiguration config = new CorsConfiguration();
+                config.addAllowedOrigin("*"); // ← Разрешить ВСЕ домены
+                config.addAllowedMethod("*"); // ← Разрешить ВСЕ методы
+                config.addAllowedHeader("*"); // ← Разрешить ВСЕ заголовки
+                return config;
+            })) // Настраиваем CORS на любой домен, любой метод и любые заголовки (для локального фронта/jQuery запросов браузеру на бэк)
+                
             .csrf().disable()
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/public/**").permitAll()

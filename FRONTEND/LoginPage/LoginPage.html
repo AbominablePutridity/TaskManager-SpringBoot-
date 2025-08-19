@@ -1,1 +1,28 @@
 <!DOCTYPE html>
+<html>
+  <head>
+      <title>Вход</title>
+      <meta charset="UTF-8">
+      
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1>Вход</h1>
+      <form>
+          <div>
+              <input id="loginField" type="text" placeholder="Логин" required>
+          </div>
+          <div>
+              <input id="passwordField" type="password" placeholder="Пароль" required>
+          </div>
+          <div>
+              <button id="enterButton" type="button">Войти</button>
+          </div>
+      </form>
+
+      <div id="result"></div>
+
+      <script src="LoginScript.js"></script>
+      <script src="../MainClass.js"></script>
+  </body>
+</html>
