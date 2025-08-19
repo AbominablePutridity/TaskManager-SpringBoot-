@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -68,8 +69,8 @@ public class ProjectController {
     sort – сортировка (необязательно)
      */
     @GetMapping("api/admin/getAllProjects")
-    public Page<ProjectDto> getAllProjects(Pageable pageable){
-        return projectRepository.findAll(pageable).map(project -> new ProjectDto(project));
+    public Page<ProjectDto> getAllProjects(Pageable pageable, @RequestParam(required = false) String name){
+        return projectRepository.findAllByName(pageable, name).map(project -> new ProjectDto(project));
     }
     
     @PostMapping("/api/admin/project")

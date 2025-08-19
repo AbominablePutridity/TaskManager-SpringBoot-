@@ -8,6 +8,8 @@ import com.mycompany.taskmanager.entity.Project;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 /**
  *
@@ -15,6 +17,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface ProjectRepository extends JpaRepository <Project, Long> {
     // Пагинация работает "из коробки" - просто добавляем Pageable
-    @Override
-    Page<Project> findAll(Pageable pageable);
+    //@Override
+    @Query("""
+           SELECT p FROM Project p
+           WHERE (:name IS NULL OR p.name LIKE %:name%)
+           """)
+    Page<Project> findAllByName(Pageable pageable, @Param("name") String name);
 }

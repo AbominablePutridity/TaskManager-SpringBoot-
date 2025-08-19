@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -59,9 +60,9 @@ public class UserCustomController {
      */
     // GET (коллекция) → /api/user/user
     @GetMapping("/api/user/user")
-    public ResponseEntity<Page<UserDto>> getAllUsers(Pageable pageable) {
+    public ResponseEntity<Page<UserDto>> getAllUsers(Pageable pageable, @RequestParam(required = false) String firstName, @RequestParam(required = false) String lastName) {
         // Получаем страницу пользователей из репозитория
-        Page<User> usersPage = userRepository.findAll(pageable);
+        Page<User> usersPage = userRepository.findAllByName(pageable, firstName, lastName);
 
         // Преобразуем Page<User> в Page<UserDto>
         Page<UserDto> usersDtoPage = usersPage.map(user -> new UserDto(user));
